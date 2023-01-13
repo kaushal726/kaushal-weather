@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,31 @@
     <title>Weather</title>
     <link type="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1 class="heading">Weather App</h1>
-    <input class="cityinput" type="text" placeholder="Enter the city">
-    <button type="submit">Submit</button>
+    <section class="inputs">
+        <input type="text" placeholder="Enter any city..." id="cityinput">
+        <button type="submit" placeholder="submit" id="add">Submit</button>
+    </section>
+    <section class="display">
+        <div class="wrapper">
+            <h2 id="cityoutput"></h2>
+            <p id="description"></p>
+            <p id="temp"></p>
+            <p id="wind"></p>
+            <p id="visibility"></p>
+            <p id="date"></p>
+            <p id="sunrise"></p>
+            <p id="sunset"></p>
+            <p id="humidity"></p>
+            <p id="pressure"></p>
+            <p id="maxtemp"></p>
+            <p id="mintemp"></p>
+            <p id="feelslike"></p>
+
+        </div>
+    </section>
 </body>
 <script src="main.js"></script>
+
 </html>
