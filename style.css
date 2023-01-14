@@ -1,0 +1,10 @@
+.inputs{
+    text-align: center;
+}
+.wrapper{
+    background-color: aqua;
+    margin: 1rem 18rem 1rem 18rem;
+    text-align: center;
+    font-family: cursive;
+    border-radius: 10px;
+}
