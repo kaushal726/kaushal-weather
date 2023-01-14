@@ -20,15 +20,23 @@ function tempConverter(kelvin) {
     return Math.round(kelvin - 273.15)
 }
 function unixToDateConverter(unixDate){
-
+    let date = new Date(unixDate * 1000);
+    // let result = date.slice(0, 10);
+    // console.log(result);
+    return date;
 }
 function unixToTimeConverter(unixDate) {
-
+    let date = new Date(unixDate * 1000);
+    let hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+    let formatTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    return(formatTime);
 }
 submitBtn.addEventListener("click", () => {
     city = textValue.value;
     console.log(city);
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3045dd712ffe6e702e3245525ac7fa38`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ff65fd7da036d1e69fa3a5025c2e46d1`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
@@ -49,14 +57,14 @@ submitBtn.addEventListener("click", () => {
             description.innerHTML = `Description :  ${descvar}`;
             temp.innerHTML = `Temperature : ${tempConverter(tempvar)}°C`;
             wind.innerHTML = `Wind :  ${windvar}`;
-            date.innerHTML = `Date : ${datevar}`;
-            sunrise.innerHTML = `Sunrise :  ${sunrisevar}`;
-            sunset.innerHTML = `Sunset : ${sunsetvar}`;
+            date.innerHTML = `Date : ${unixToDateConverter(datevar)}`;
+            sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(sunrisevar)}`;
+            sunset.innerHTML = `Sunset : ${unixToTimeConverter(sunsetvar)}`;
             humidity.innerHTML = `Humidity : ${humidityvar}`;
             pressure.innerHTML = `Pressure : ${pressurevar}`;
             maxtemp.innerHTML = `Maximum Temperature : ${tempConverter(maxtempvar)}°C`;
             mintemp.innerHTML = `Minimum Temperature : ${tempConverter(mintempvar)}°C`;
-            feelslike.innerHTML = `Feelslike :  ${feelslikevar}`;
+            feelslike.innerHTML = `Feelslike :  ${tempConverter(feelslikevar)}°C`;
         })
 })
 
