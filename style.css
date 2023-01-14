@@ -1,3 +1,6 @@
+body{
+    background-color: black;
+}
 .Heading {
     text-align: center;
     color: lightskyblue;
@@ -9,6 +12,7 @@
 
 .inputs {
     text-align: center;
+    color: white;
 }
 
 .wrapper {
