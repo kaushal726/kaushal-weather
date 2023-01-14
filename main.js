@@ -36,7 +36,7 @@ function unixToTimeConverter(unixDate) {
 submitBtn.addEventListener("click", () => {
     city = textValue.value;
     console.log(city);
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ff65fd7da036d1e69fa3a5025c2e46d1`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3045dd712ffe6e702e3245525ac7fa38`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
