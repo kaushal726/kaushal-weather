@@ -1,7 +1,17 @@
-.inputs{
+.Heading {
+    text-align: center;
+    color: lightskyblue;
+    font-size: xx-large;
+    margin: 0%;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+.inputs {
     text-align: center;
 }
-.wrapper{
+
+.wrapper {
     background-color: aqua;
     margin: 1rem 18rem 1rem 18rem;
     text-align: center;
