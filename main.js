@@ -27,7 +27,7 @@ function unixToTimeConverter(unixDate) {
     let hours = date.getHours();
     let minutes = "0" + date.getMinutes();
     let seconds = "0" + date.getSeconds();
-    let formatTime = hours>12?hours-12:hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    let formatTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
     return (formatTime);
 }
 submitBtn.addEventListener("click", () => {
