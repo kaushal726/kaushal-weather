@@ -22,3 +22,6 @@ body{
     font-family: cursive;
     border-radius: 10px;
 }
+.cityinput{
+    width: 100px;
+}
