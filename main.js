@@ -1,4 +1,5 @@
 let textValue = document.querySelector("#cityinput");
+let wrapper = document.querySelector(".wrapper");
 let submitBtn = document.querySelector("#add");
 let cityoutput = document.querySelector("#cityoutput");
 let description = document.querySelector("#description");
@@ -8,6 +9,7 @@ let visibility = document.querySelector("#visibility");
 let date = document.querySelector("#date");
 let sunrise = document.querySelector("#sunrise");
 let sunset = document.querySelector("#sunset");
+let errorshow = document.querySelector('.Error')
 let humidity = document.querySelector("#humidity");
 let pressure = document.querySelector("#pressure");
 let feelslike = document.querySelector("#feelslike");
@@ -42,11 +44,15 @@ function unixToTimeConverter(unixDate, which) {
         return (formatTime);
     }
 }
+function showval() {
+    errorshow.innerHTML = `No result found,Try Again!`
+    textValue.value = "";
+    wrapper.style.display='none';   
+}
 
 submitBtn.addEventListener("click", () => {
     city = textValue.value;
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=59467ea71641323dee7468c3b76b7ecc`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=45654a6dc7b02c529ac96f54dd6510a1`)
         .then(res => res.json())
         .then(data => {
             cityname = data['name'];
@@ -70,7 +76,11 @@ submitBtn.addEventListener("click", () => {
             humidity.innerHTML = `Humidity : ${humidityvar} %`;
             pressure.innerHTML = `Pressure : ↑${pressurevar} mb`;
             feelslike.innerHTML = `Feelslike :  ${tempConverter(feelslikevar)} °C`;
-            textValue.innerHTML = "";
+            textValue.value = "";
+        })
+        .catch(err => {
+            showval();
+            console.log(err);
         })
 
 })

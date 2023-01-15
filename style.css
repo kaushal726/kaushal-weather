@@ -10,6 +10,9 @@ body {
   font-weight: bold;
   font-family: cursive;
 }
+.Error{
+  text-align: center;
+}
 
 .inputs {
   text-align: center;
