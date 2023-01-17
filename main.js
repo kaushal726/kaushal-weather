@@ -46,15 +46,14 @@ function unixToTimeConverter(unixDate, which) {
 function showval() {
     errorshow.innerHTML = `No result found,Try Again!`
     textValue.value = "";
-    wrapper.style.display = 'none';
-    errorshow.style.display="block"
+    wrapper.style.display = "none";
+    errorshow.style.display = "block";
 }
 
-submitBtn.addEventListener("keydown", callApi, false);
-submitBtn.addEventListener("click ", callApi, false);
-function callApi() {
+function showApi() {
+    console.log("sssssssss");
     city = textValue.value;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=45654a6dc7b02c529ac96f54dd6510a1`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
         .then(data => {
             cityname = data['name'];
@@ -78,9 +77,9 @@ function callApi() {
             humidity.innerHTML = `Humidity : ${humidityvar} %`;
             pressure.innerHTML = `Pressure : ↑${pressurevar} mb`;
             feelslike.innerHTML = `Feelslike :  ${tempConverter(feelslikevar)} °C`;
+            wrapper.style.display = "block";
+            errorshow.style.display = "none";
             textValue.value = "";
-            wrapper.style.display = 'block';
-            errorshow.style.display = "none"
         })
         .catch(err => {
             showval();
@@ -88,5 +87,6 @@ function callApi() {
         })
 
 }
+
 
 
