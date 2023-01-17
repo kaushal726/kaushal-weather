@@ -20,7 +20,6 @@ function tempConverter(kelvin) {
 }
 function unixToDateConverter(unixDate) {
     let date = new Date(unixDate * 1000);
-    // let newDatw = date.substring(1, 10);
     console.log(date);
     return date;
 }
@@ -47,10 +46,13 @@ function unixToTimeConverter(unixDate, which) {
 function showval() {
     errorshow.innerHTML = `No result found,Try Again!`
     textValue.value = "";
-    wrapper.style.display='none';   
+    wrapper.style.display = 'none';
+    errorshow.style.display="block"
 }
 
-submitBtn.addEventListener("click", () => {
+submitBtn.addEventListener("keydown", callApi, false);
+submitBtn.addEventListener("click ", callApi, false);
+function callApi() {
     city = textValue.value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=45654a6dc7b02c529ac96f54dd6510a1`)
         .then(res => res.json())
@@ -77,12 +79,14 @@ submitBtn.addEventListener("click", () => {
             pressure.innerHTML = `Pressure : ↑${pressurevar} mb`;
             feelslike.innerHTML = `Feelslike :  ${tempConverter(feelslikevar)} °C`;
             textValue.value = "";
+            wrapper.style.display = 'block';
+            errorshow.style.display = "none"
         })
         .catch(err => {
             showval();
             console.log(err);
         })
 
-})
+}
 
 
