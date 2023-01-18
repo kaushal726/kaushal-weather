@@ -10,29 +10,31 @@
 </head>
 
 <body>
-    <section class="inputs">
-        <h1 class="Heading">Kaushal Raj</h1>
-        <h1>Weather App</h1>
-        <input type="text" placeholder="Enter any city..." id="cityinput">
-        <button type="submit" placeholder="submit" id="add" onclick="showApi()">Submit</button>
-    </section>
-    <section class="display">
-        <div class="wrapper">
-            <h2 id="cityoutput"></h2>
-            <p id="date"></p>
-            <p id="temp"></p>
-            <p id="description"></p>
-            <p id="feelslike"></p>
-            <p id="wind"></p>
-            <p id="sunrise"></p>
-            <p id="sunset"></p>
-            <p id="humidity"></p>
-            <p id="pressure"></p>
-            <p id="visibility"></p>
+    <div class="main">
+        <section class="inputs">
+            <h1 class="Heading">Kaushal Raj</h1>
+            <h1 style="font-size: xx-large;">Weather App</h1>
+            <input type="text" placeholder="Enter any city..." id="cityinput">
+            <button type="submit" placeholder="submit" id="add" onclick="showApi()">Submit</button>
+        </section>
+        <section class="display">
+            <div class="wrapper">
+                <h2 id="cityoutput"></h2>
+                <p id="date"></p>
+                <p id="temp"></p>
+                <p id="description"></p>
+                <p id="feelslike"></p>
+                <p id="wind"></p>
+                <p id="sunrise"></p>
+                <p id="sunset"></p>
+                <p id="humidity"></p>
+                <p id="pressure"></p>
+                <p id="visibility"></p>
 
-        </div>
-    </section>
-    <h3  class="Error"></h3>
+            </div>
+        </section>
+        <h3 class="Error"></h3>
+    </div>
 </body>
 <script src="main.js"></script>
 
