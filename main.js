@@ -15,6 +15,13 @@ let pressure = document.querySelector("#pressure");
 let feelslike = document.querySelector("#feelslike");
 let city, cityname, descvar, tempvar, windvar, visibilityvar, datevar, sunrisevar, sunsetvar, humidityvar, pressurevar, feelslikevar;
 
+
+document.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") submitBtn.click();
+})
+
+
+
 function tempConverter(kelvin) {
     return Math.round(kelvin - 273.15);
 }
