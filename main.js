@@ -60,12 +60,13 @@ function showval() {
 function showApi() {
     console.log("sssssssss");
     city = textValue.value;
+    console.log({ city });
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
         .then(data => {
-            cityname = data['name'];
-            descvar = data['weather']['0']['description'];
-            tempvar = data['main']['temp'];
+            cityname = data.name;
+            descvar = data.weather[0].description;
+            tempvar = data.main.temp;
             windvar = data['wind']['speed'];
             visibilityvar = data['visibility'];
             datevar = data['dt'];
@@ -89,7 +90,7 @@ function showApi() {
             textValue.value = "";
         })
         .catch(err => {
-            showval();
+            // showval();
             console.log(err);
         })
 
