@@ -59,7 +59,10 @@ function showval() {
 
 function showApi() {
     console.log("sssssssss");
-    city = textValue.value;
+    if (textValue.value != "")
+        city = textValue.value
+    else
+        city = "Ranchi";
     console.log({ city });
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
@@ -76,8 +79,8 @@ function showApi() {
             humidityvar = data['main']['humidity'];
             feelslikevar = data['main']['feels_like'];
             cityoutput.innerHTML = `Weather of ${cityname}`;
-            description.innerHTML = `Description :  ${descvar}`;
-            temp.innerHTML = ` ${tempConverter(tempvar)} °C`;
+            description.innerHTML = `${descvar.toUpperCase()}`;
+            temp.innerHTML = ` ${tempConverter(tempvar)}°C`;
             wind.innerHTML = `Wind :  ${windvar} mph`;
             date.innerHTML = `Date : ${unixToDateConverter(datevar)}`;
             sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(sunrisevar, "sunrise")} am`;
@@ -95,6 +98,7 @@ function showApi() {
         })
     console.log({ temp });
 }
+showApi();
 
 
 
