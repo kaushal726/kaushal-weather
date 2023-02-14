@@ -23,7 +23,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
             <ul class="nav col-12 col-lg-auto me-lg-auto align-items-center  mb-2 justify-content-center mb-md-0">
-                <li style="margin-left:1%;" class=" fs-2  text-white">Weather App</li>
+                <li class=" fs-2  text-white">Weather App</li>
 
             </ul>
 
@@ -34,7 +34,6 @@
 
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2" id="add" onclick="showApi()">Submit</button>
-                <!-- <button type="button" class="btn btn-warning">Sign-up</button> -->
             </div>
         </div>
     </header>
@@ -46,9 +45,10 @@
                         <h4 id="cityoutput" class="my-0 fw-normal"></h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+                        <h1 id="temp" class="card-title pricing-card-title">$0<small
+                                class="text-muted fw-light">/mo</small></h1>
                         <ul class="list-unstyled mt-3 mb-2">
-                            <li id="temp">10 users included</li>
+                            <li id="description"></li>
                             <li>2 GB of storage</li>
                             <li>Email support</li>
                             <li>Help center access</li>

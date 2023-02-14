@@ -77,7 +77,7 @@ function showApi() {
             feelslikevar = data['main']['feels_like'];
             cityoutput.innerHTML = `Weather of ${cityname}`;
             description.innerHTML = `Description :  ${descvar}`;
-            temp.innerHTML = `Temperature : ${tempConverter(tempvar)} °C`;
+            temp.innerHTML = ` ${tempConverter(tempvar)} °C`;
             wind.innerHTML = `Wind :  ${windvar} mph`;
             date.innerHTML = `Date : ${unixToDateConverter(datevar)}`;
             sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(sunrisevar, "sunrise")} am`;
@@ -93,7 +93,7 @@ function showApi() {
             // showval();
             console.log(err);
         })
-
+    console.log({ temp });
 }
 
 
