@@ -13,6 +13,7 @@ let errorshow = document.querySelector('.Error')
 let humidity = document.querySelector("#humidity");
 let pressure = document.querySelector("#pressure");
 let feelslike = document.querySelector("#feelslike");
+let gayatemp = document.querySelector("#gtemp");
 let city, cityname, descvar, tempvar, windvar, visibilityvar, datevar, sunrisevar, sunsetvar, humidityvar, pressurevar, feelslikevar;
 
 
@@ -100,6 +101,32 @@ function showApi() {
     console.log({ temp });
 }
 showApi();
+
+
+let gaya = {
+    temperature: 1,
+    description: "",
+    feelslike: 1,
+    wind: 1,
+    sunrise: 1,
+    sunset: 1,
+};
+
+let gayafnc = () => {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=gaya&appid=0e94590180a6e60e6c262defb6d414ad`)
+        .then(res => res.json())
+        .then(data => {
+            cityname = data.name;
+            gaya.description = data.weather[0].description;
+            gaya.temperature = data.main.temp;
+            gaya.wind = data['wind']['speed'];
+            gaya.sunrise = data['sys']['sunrise'];
+            gaya.sunset = data['sys']['sunset'];
+            gaya.feelslike = data['main']['feels_like'];
+            gayatemp.innerHTML = ` ${tempConverter(gaya.temperature)}°C`;
+        })
+}
+gayafnc();
 
 
 
