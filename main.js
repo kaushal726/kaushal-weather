@@ -64,6 +64,7 @@ function showApi() {
     else
         city = "Ranchi";
     console.log({ city });
+    textValue.value = "";
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
         .then(data => {

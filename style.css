@@ -1,110 +1,26 @@
 body {
-  all: unset;
-}
-.main {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: url("assest/image/1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  /* filter: blur(5px); */
+  /* overflow: hidden !important; */
 }
 
-.Heading {
-  text-align: center;
-  color: rgb(211, 236, 69);
-  font-size: xx-large;
-  margin: 0%;
-  font-weight: bold;
-  font-family: cursive;
-}
-.Error {
-  text-align: center;
-  font-size: xx-large;
+.weather {
+  background-image: url("assest/image/1.jpg");
 }
 
-.inputs {
-  text-align: center;
-  color: rgb(0, 0, 0);
-}
-
-#cityinput {
-  all: unset;
-  text-align: left;
-  width: 50%;
-  padding: 1%;
-  -webkit-box-shadow: 4px 16px 74px 18px rgba(0, 0, 0, 0.36);
-  -moz-box-shadow: 4px 16px 74px 18px rgba(0, 0, 0, 0.36);
-  box-shadow: 4px 16px 74px 18px rgba(0, 0, 0, 0.36);
-  border-radius: 10px;
-  font-size: large;
-  background-color: rgb(195, 238, 238);
-}
-#cityinput:hover {
-  background-color: rgb(186, 243, 243);
-}
-
-#add {
-  padding: 1%;
-  align-items: center;
-  background-color: initial;
-  background-image: linear-gradient(
-    rgba(179, 132, 201, 0.84),
-    rgba(57, 31, 91, 0.84) 50%
-  );
-  border-radius: 42px;
-  border-width: 0;
-  box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,
-    rgba(179, 132, 201, 0.4) 0 8px 12px;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Quicksand, sans-serif;
-  font-size: 18px;
+.head {
   font-weight: 700;
+  margin: 0.5em !important;
+}
+.input {
+  width: 33% !important;
+  margin-right: 0.2em;
+}
+.card1 {
+  margin: auto;
   justify-content: center;
-  letter-spacing: 0.04em;
-  line-height: 16px;
-  margin: 0;
-  padding: 18px 5px;
-  text-align: center;
-  text-decoration: none;
-  text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px,
-    rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px,
-    rgba(57, 31, 91, 0.32) 4px 4px 16px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
+  color: aliceblue;
+  /* align-items: center; */
 }
-
-#add:hover {
-  background-image: linear-gradient(#b384c9, #391f5b 50%);
-}
-
-@media (min-width: 768px) {
-  #add {
-    font-size: 15px;
-    padding: 12px 34px;
-  }
-}
-
-.wrapper {
-  background-color: rgb(245, 226, 121);
-  text-align: center;
-  /* font-family: cursive; */
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  margin: 2% 20% 0% 20%;
-}
-
-.cityinput {
-  width: 100px;
+.cityhead {
+  color: black;
+  font-family: cursive;
 }
