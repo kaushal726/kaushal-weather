@@ -141,16 +141,16 @@ let gayafnc = () => {
 }
 gayafnc();
 
-function success(pos) {
-    const crd = pos.coords;
+// function success(pos) {
+//     const crd = pos.coords;
 
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-    // displayLocation(crd.latitude, crd.longitude);
-}
+//     console.log('Your current position is:');
+//     console.log(`Latitude : ${crd.latitude}`);
+//     console.log(`Longitude: ${crd.longitude}`);
+//     console.log(`More or less ${crd.accuracy} meters.`);
+//     // displayLocation(crd.latitude, crd.longitude);
+// }
 
-navigator.geolocation.getCurrentPosition(success);
+// navigator.geolocation.getCurrentPosition(success);
 
 
