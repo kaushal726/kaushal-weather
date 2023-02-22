@@ -24,3 +24,27 @@ body {
   color: black;
   font-family: cursive;
 }
+th {
+  width: 1% !important;
+  font-weight: 800;
+}
+td {
+  width: 3% !important;
+}
+.x {
+  border: 1px solid;
+  border-color: #96d4d4;
+  border-radius: 10px;
+}
+table {
+  table-layout: fixed;
+}
+@media (max-width: 544px) {
+  td {
+    font-size: 0.3rem;
+  }
+  th {
+    font-size: 0.5rem;
+    font-weight: 800;
+  }
+}

@@ -14,6 +14,11 @@ let humidity = document.querySelector("#humidity");
 let pressure = document.querySelector("#pressure");
 let feelslike = document.querySelector("#feelslike");
 let gayatemp = document.querySelector("#gtemp");
+let gayadesc = document.querySelector("#gdesc");
+let gayafeelike = document.querySelector("#gfl");
+let gayawind = document.querySelector("#gw");
+let gayasunrise = document.querySelector("#gsr");
+let gayasunset = document.querySelector("#gss");
 let city, cityname, descvar, tempvar, windvar, visibilityvar, datevar, sunrisevar, sunsetvar, humidityvar, pressurevar, feelslikevar;
 
 
@@ -39,6 +44,8 @@ function unixToTimeConverter(unixDate, which) {
         let minutes = "0" + date.getMinutes();
         let seconds = "0" + date.getSeconds();
         let formatTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        console.log({ formatTime });
+
         return (formatTime);
     }
     else {
@@ -123,7 +130,13 @@ let gayafnc = () => {
             gaya.sunrise = data['sys']['sunrise'];
             gaya.sunset = data['sys']['sunset'];
             gaya.feelslike = data['main']['feels_like'];
+            console.log("1", gaya.sunset);
             gayatemp.innerHTML = ` ${tempConverter(gaya.temperature)}°C`;
+            gayadesc.innerHTML = `${gaya.description.toUpperCase()}`;
+            gayawind.innerHTML = `${gaya.wind} mph`;
+            gayafeelike.innerHTML = ` ${tempConverter(gaya.feelslike)}°C`;
+            gayasunrise.innerHTML = ` ${unixToTimeConverter(gaya.sunrise, "sunrise")} am`;
+            gayasunset.innerHTML = ` ${unixToTimeConverter(gaya.sunset, "sunset")} pm`;
         })
 }
 gayafnc();
