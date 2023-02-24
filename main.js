@@ -154,3 +154,16 @@ gayafnc();
 // navigator.geolocation.getCurrentPosition(success);
 
 
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+        'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
+    }
+};
+
+fetch('https://google-maps-geocoding.p.rapidapi.com/geocode/json?latlng=40.714224%2C-73.96145&language=en', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
