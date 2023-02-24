@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(207, 201, 201);
+  background-color: rgba(228, 228, 228, 0.555);
 }
 
 .weather {
@@ -22,7 +22,8 @@ body {
 }
 .cityhead {
   color: black;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
 }
 th {
   width: 1% !important;

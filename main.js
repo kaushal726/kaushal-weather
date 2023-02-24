@@ -21,7 +21,7 @@ let gayasunrise = document.querySelector("#gsr");
 let gayasunset = document.querySelector("#gss");
 let city, cityname, descvar, tempvar, windvar, visibilityvar, datevar, sunrisevar, sunsetvar, humidityvar, pressurevar, feelslikevar;
 
-
+console.log({ sunset });
 document.addEventListener("keydown", (e) => {
     if (e.key == "Enter") submitBtn.click();
 })
@@ -91,7 +91,7 @@ function showApi() {
             description.innerHTML = `${descvar.toUpperCase()}`;
             temp.innerHTML = ` ${tempConverter(tempvar)}°C`;
             wind.innerHTML = `Wind :  ${windvar} mph`;
-            date.innerHTML = `Date : ${unixToDateConverter(datevar)}`;
+            // date.innerHTML = `Date : ${unixToDateConverter(datevar)}`;
             sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(sunrisevar, "sunrise")} am`;
             sunset.innerHTML = `Sunset : ${unixToTimeConverter(sunsetvar, "sunset")} pm`;
             humidity.innerHTML = `Humidity : ${humidityvar} %`;
