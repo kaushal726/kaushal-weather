@@ -19,21 +19,28 @@ let gayafeelike = document.querySelector("#gfl");
 let gayawind = document.querySelector("#gw");
 let gayasunrise = document.querySelector("#gsr");
 let gayasunset = document.querySelector("#gss");
+let gurgaontemp = document.querySelector("#grtemp");
+let gurgaondesc = document.querySelector("#grdesc");
+let gurgaonfeelike = document.querySelector("#grfl");
+let gurgaonwind = document.querySelector("#grw");
+let gurgaonsunrise = document.querySelector("#grsr");
+let gurgaonsunset = document.querySelector("#grss");
+let mumbaitemp = document.querySelector("#mtemp");
+let mumbaidesc = document.querySelector("#mdesc");
+let mumbailike = document.querySelector("#mfl");
+let mumbaiwind = document.querySelector("#mw");
+let mumbaisunrise = document.querySelector("#msr");
+let mumbaisunset = document.querySelector("#mss");
 let city, cityname, descvar, tempvar, windvar, visibilityvar, datevar, sunrisevar, sunsetvar, humidityvar, pressurevar, feelslikevar;
 
-console.log({ sunset });
 document.addEventListener("keydown", (e) => {
     if (e.key == "Enter") submitBtn.click();
 })
-
-
-
 function tempConverter(kelvin) {
     return Math.round(kelvin - 273.15);
 }
 function unixToDateConverter(unixDate) {
     let date = new Date(unixDate * 1000);
-    console.log(date);
     return date;
 }
 
@@ -44,7 +51,6 @@ function unixToTimeConverter(unixDate, which) {
         let minutes = "0" + date.getMinutes();
         let seconds = "0" + date.getSeconds();
         let formatTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-        console.log({ formatTime });
 
         return (formatTime);
     }
@@ -66,12 +72,10 @@ function showval() {
 }
 
 function showApi() {
-    console.log("sssssssss");
     if (textValue.value != "")
         city = textValue.value
     else
         city = "Ranchi";
-    console.log({ city });
     textValue.value = "";
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
@@ -91,79 +95,43 @@ function showApi() {
             description.innerHTML = `${descvar.toUpperCase()}`;
             temp.innerHTML = ` ${tempConverter(tempvar)}°C`;
             wind.innerHTML = `Wind :  ${windvar} mph`;
-            // date.innerHTML = `Date : ${unixToDateConverter(datevar)}`;
             sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(sunrisevar, "sunrise")} am`;
             sunset.innerHTML = `Sunset : ${unixToTimeConverter(sunsetvar, "sunset")} pm`;
-            humidity.innerHTML = `Humidity : ${humidityvar} %`;
-            pressure.innerHTML = `Pressure : ↑${pressurevar} mb`;
-            feelslike.innerHTML = `Feelslike :  ${tempConverter(feelslikevar)} °C`;
-            wrapper.style.display = "block";
-            errorshow.style.display = "none";
             textValue.value = "";
         })
         .catch(err => {
-            // showval();
             console.log(err);
         })
-    console.log({ temp });
 }
 showApi();
 
+let showWeatherOfCity = (cityName, temp, desc, feelslike, wind, sunrise, sunset) => {
+    let cityDetail = {
+        temperature: null,
+        description: null,
+        feelslike: null,
+        wind: null,
+        sunrise: null,
+        sunset: null,
+    };
 
-let gaya = {
-    temperature: 1,
-    description: "",
-    feelslike: 1,
-    wind: 1,
-    sunrise: 1,
-    sunset: 1,
-};
-
-let gayafnc = () => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=gaya&appid=0e94590180a6e60e6c262defb6d414ad`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
         .then(data => {
-            cityname = data.name;
-            gaya.description = data.weather[0].description;
-            gaya.temperature = data.main.temp;
-            gaya.wind = data['wind']['speed'];
-            gaya.sunrise = data['sys']['sunrise'];
-            gaya.sunset = data['sys']['sunset'];
-            gaya.feelslike = data['main']['feels_like'];
-            console.log("1", gaya.sunset);
-            gayatemp.innerHTML = ` ${tempConverter(gaya.temperature)}°C`;
-            gayadesc.innerHTML = `${gaya.description.toUpperCase()}`;
-            gayawind.innerHTML = `${gaya.wind} mph`;
-            gayafeelike.innerHTML = ` ${tempConverter(gaya.feelslike)}°C`;
-            gayasunrise.innerHTML = ` ${unixToTimeConverter(gaya.sunrise, "sunrise")} am`;
-            gayasunset.innerHTML = ` ${unixToTimeConverter(gaya.sunset, "sunset")} pm`;
+            cityDetail.description = data.weather[0].description;
+            cityDetail.temperature = data.main.temp;
+            cityDetail.wind = data['wind']['speed'];
+            cityDetail.sunrise = data['sys']['sunrise'];
+            cityDetail.sunset = data['sys']['sunset'];
+            cityDetail.feelslike = data['main']['feels_like'];
+            temp.innerHTML = ` ${tempConverter(cityDetail.temperature)}°C`;
+            desc.innerHTML = `${cityDetail.description.toUpperCase()}`;
+            wind.innerHTML = `${cityDetail.wind} mph`;
+            feelslike.innerHTML = ` ${tempConverter(cityDetail.feelslike)}°C`;
+            sunrise.innerHTML = ` ${unixToTimeConverter(cityDetail.sunrise, "sunrise")} am`;
+            sunset.innerHTML = ` ${unixToTimeConverter(cityDetail.sunset, "sunset")} pm`;
         })
 }
-gayafnc();
-
-// function success(pos) {
-//     const crd = pos.coords;
-
-//     console.log('Your current position is:');
-//     console.log(`Latitude : ${crd.latitude}`);
-//     console.log(`Longitude: ${crd.longitude}`);
-//     console.log(`More or less ${crd.accuracy} meters.`);
-//     // displayLocation(crd.latitude, crd.longitude);
-// }
-
-// navigator.geolocation.getCurrentPosition(success);
-
-
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-        'X-RapidAPI-Host': 'google-maps-geocoding.p.rapidapi.com'
-    }
-};
-
-fetch('https://google-maps-geocoding.p.rapidapi.com/geocode/json?latlng=40.714224%2C-73.96145&language=en', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-
+showWeatherOfCity("gurgaon", gurgaontemp, gurgaondesc, gurgaonfeelike, gurgaonwind, gurgaonsunrise, gurgaonsunset);
+showWeatherOfCity("mumbai", mumbaitemp, mumbaidesc, mumbailike, mumbaiwind, mumbaisunrise, mumbaisunset);
+showWeatherOfCity("gaya", gayatemp, gayadesc, gayafeelike, gayawind, gayasunrise, gayasunset);
