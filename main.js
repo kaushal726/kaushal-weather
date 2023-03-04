@@ -31,7 +31,6 @@ let mumbailike = document.querySelector("#mfl");
 let mumbaiwind = document.querySelector("#mw");
 let mumbaisunrise = document.querySelector("#msr");
 let mumbaisunset = document.querySelector("#mss");
-let city, cityname, descvar, tempvar, windvar, visibilityvar, datevar, sunrisevar, sunsetvar, humidityvar, pressurevar, feelslikevar;
 
 document.addEventListener("keydown", (e) => {
     if (e.key == "Enter") submitBtn.click();
@@ -80,23 +79,12 @@ function showApi() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
         .then(data => {
-            cityname = data.name;
-            descvar = data.weather[0].description;
-            tempvar = data.main.temp;
-            windvar = data['wind']['speed'];
-            visibilityvar = data['visibility'];
-            datevar = data['dt'];
-            sunrisevar = data['sys']['sunrise'];
-            sunsetvar = data['sys']['sunset'];
-            pressurevar = data['main']['pressure'];
-            humidityvar = data['main']['humidity'];
-            feelslikevar = data['main']['feels_like'];
-            cityoutput.innerHTML = `Weather of ${cityname}`;
-            description.innerHTML = `${descvar.toUpperCase()}`;
-            temp.innerHTML = ` ${tempConverter(tempvar)}°C`;
-            wind.innerHTML = `Wind :  ${windvar} mph`;
-            sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(sunrisevar, "sunrise")} am`;
-            sunset.innerHTML = `Sunset : ${unixToTimeConverter(sunsetvar, "sunset")} pm`;
+            cityoutput.innerHTML = `Weather of ${data.name}`;
+            description.innerHTML = `${data.weather[0].description.toUpperCase()}`;
+            temp.innerHTML = ` ${tempConverter(data.main.temp)}°C`;
+            wind.innerHTML = `Wind :  ${data['wind']['speed']} mph`;
+            sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(data['sys']['sunrise'], "sunrise")} am`;
+            sunset.innerHTML = `Sunset : ${unixToTimeConverter(data['sys']['sunset'], "sunset")} pm`;
             textValue.value = "";
         })
         .catch(err => {
@@ -105,33 +93,19 @@ function showApi() {
 }
 showApi();
 
-let showWeatherOfCity = (cityName, temp, desc, feelslike, wind, sunrise, sunset) => {
-    let cityDetail = {
-        temperature: null,
-        description: null,
-        feelslike: null,
-        wind: null,
-        sunrise: null,
-        sunset: null,
-    };
-
+let showWeatherOfCity = (args) => {
+    let [cityName, temp, desc, feelslike, wind, sunrise, sunset] = args;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
         .then(data => {
-            cityDetail.description = data.weather[0].description;
-            cityDetail.temperature = data.main.temp;
-            cityDetail.wind = data['wind']['speed'];
-            cityDetail.sunrise = data['sys']['sunrise'];
-            cityDetail.sunset = data['sys']['sunset'];
-            cityDetail.feelslike = data['main']['feels_like'];
-            temp.innerHTML = ` ${tempConverter(cityDetail.temperature)}°C`;
-            desc.innerHTML = `${cityDetail.description.toUpperCase()}`;
-            wind.innerHTML = `${cityDetail.wind} mph`;
-            feelslike.innerHTML = ` ${tempConverter(cityDetail.feelslike)}°C`;
-            sunrise.innerHTML = ` ${unixToTimeConverter(cityDetail.sunrise, "sunrise")} am`;
-            sunset.innerHTML = ` ${unixToTimeConverter(cityDetail.sunset, "sunset")} pm`;
+            temp.innerHTML = ` ${tempConverter(data.main.temp)}°C`;
+            desc.innerHTML = `${data.weather[0].description.toUpperCase()}`;
+            wind.innerHTML = `${data['wind']['speed']} mph`;
+            feelslike.innerHTML = ` ${tempConverter(data['main']['feels_like'])}°C`;
+            sunrise.innerHTML = ` ${unixToTimeConverter(data['sys']['sunrise'], "sunrise")} am`;
+            sunset.innerHTML = ` ${unixToTimeConverter(data['sys']['sunset'], "sunset")} pm`;
         })
 }
-showWeatherOfCity("gurgaon", gurgaontemp, gurgaondesc, gurgaonfeelike, gurgaonwind, gurgaonsunrise, gurgaonsunset);
-showWeatherOfCity("mumbai", mumbaitemp, mumbaidesc, mumbailike, mumbaiwind, mumbaisunrise, mumbaisunset);
-showWeatherOfCity("gaya", gayatemp, gayadesc, gayafeelike, gayawind, gayasunrise, gayasunset);
+showWeatherOfCity(["gurgaon", gurgaontemp, gurgaondesc, gurgaonfeelike, gurgaonwind, gurgaonsunrise, gurgaonsunset]);
+showWeatherOfCity(["mumbai", mumbaitemp, mumbaidesc, mumbailike, mumbaiwind, mumbaisunrise, mumbaisunset]);
+showWeatherOfCity(["gaya", gayatemp, gayadesc, gayafeelike, gayawind, gayasunrise, gayasunset]);

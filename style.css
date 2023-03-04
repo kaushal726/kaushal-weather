@@ -46,11 +46,15 @@ table {
   td {
     font-size: 0.3rem;
     text-align: center;
+    /* overflow-x: scroll; */
   }
   th {
     font-size: 0.5rem;
     font-weight: 800;
     text-align: center;
+  }
+  .tabledata {
+    overflow: scroll;
   }
 }
 .table {
@@ -58,4 +62,5 @@ table {
 }
 .footer {
   text-align: center;
+  font-size: small;
 }
