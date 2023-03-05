@@ -74,7 +74,7 @@ function showApi() {
     if (textValue.value != "")
         city = textValue.value
     else
-        city = "Ranchi";
+        city = "Delhi";
     textValue.value = "";
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
         .then(res => res.json())
@@ -109,3 +109,20 @@ let showWeatherOfCity = (args) => {
 showWeatherOfCity(["gurgaon", gurgaontemp, gurgaondesc, gurgaonfeelike, gurgaonwind, gurgaonsunrise, gurgaonsunset]);
 showWeatherOfCity(["mumbai", mumbaitemp, mumbaidesc, mumbailike, mumbaiwind, mumbaisunrise, mumbaisunset]);
 showWeatherOfCity(["gaya", gayatemp, gayadesc, gayafeelike, gayawind, gayasunrise, gayasunset]);
+
+
+let successCallback = (position) => {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=ff65fd7da036d1e69fa3a5025c2e46d1`)
+        .then(res => res.json())
+        .then(data => {
+            cityoutput.innerHTML = `Weather of ${data.name}`;
+            description.innerHTML = `${data.weather[0].description.toUpperCase()}`;
+            temp.innerHTML = ` ${tempConverter(data.main.temp)}°C`;
+            wind.innerHTML = `Wind :  ${data.wind.speed} mph`;
+            sunrise.innerHTML = `Sunrise :  ${unixToTimeConverter(data.sys.sunrise, "sunrise")} am`;
+            sunset.innerHTML = `Sunset : ${unixToTimeConverter(data.sys.sunset, "sunset")} pm`;
+        })
+}
+navigator.geolocation.getCurrentPosition(successCallback);
