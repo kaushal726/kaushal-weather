@@ -88,7 +88,12 @@ function showApi() {
             textValue.value = "";
         })
         .catch(err => {
-            console.log(err);
+            cityoutput.innerHTML = "Sorry, we couldn't find any results "
+            description.innerHTML = ""
+            temp.innerHTML = ""
+            wind.innerHTML = ""
+            sunrise.innerHTML = ""
+            sunset.innerHTML = ""
         })
 }
 showApi();
@@ -114,6 +119,7 @@ showWeatherOfCity(["gaya", gayatemp, gayadesc, gayafeelike, gayawind, gayasunris
 let successCallback = (position) => {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
+    console.log({ latitude, longitude });
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=ff65fd7da036d1e69fa3a5025c2e46d1`)
         .then(res => res.json())
         .then(data => {
