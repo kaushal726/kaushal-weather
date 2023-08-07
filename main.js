@@ -76,7 +76,7 @@ function showApi() {
     else
         city = "Delhi";
     textValue.value = "";
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0e94590180a6e60e6c262defb6d414ad`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a3f94ace917ff857f870c65f2ce22245`)
         .then(res => res.json())
         .then(data => {
             cityoutput.innerHTML = `Weather of ${data.name}`;
