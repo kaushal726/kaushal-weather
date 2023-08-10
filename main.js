@@ -100,7 +100,7 @@ showApi();
 
 let showWeatherOfCity = (args) => {
     let [cityName, temp, desc, feelslike, wind, sunrise, sunset] = args;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0e94590180a6e60e6c262defb6d414ad`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=a3f94ace917ff857f870c65f2ce22245`)
         .then(res => res.json())
         .then(data => {
             temp.innerHTML = ` ${tempConverter(data.main.temp)}°C`;
@@ -119,7 +119,6 @@ showWeatherOfCity(["gaya", gayatemp, gayadesc, gayafeelike, gayawind, gayasunris
 let successCallback = (position) => {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    console.log({ latitude, longitude });
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=ff65fd7da036d1e69fa3a5025c2e46d1`)
         .then(res => res.json())
         .then(data => {
